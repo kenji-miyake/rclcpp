@@ -53,7 +53,7 @@ namespace rclcpp
  */
 RCLCPP_PUBLIC
 void
-init(int argc, char const * const argv[], const InitOptions & init_options = InitOptions());
+init(int argc, char const * const * argv, const InitOptions & init_options = InitOptions());
 
 /// Install the global signal handler for rclcpp.
 /**
@@ -107,7 +107,7 @@ RCLCPP_PUBLIC
 std::vector<std::string>
 init_and_remove_ros_arguments(
   int argc,
-  char const * const argv[],
+  char const * const * argv,
   const InitOptions & init_options = InitOptions());
 
 /// Remove ROS-specific arguments from argument vector.
@@ -125,7 +125,7 @@ init_and_remove_ros_arguments(
  */
 RCLCPP_PUBLIC
 std::vector<std::string>
-remove_ros_arguments(int argc, char const * const argv[]);
+remove_ros_arguments(int argc, char const * const * argv);
 
 /// Check rclcpp's status.
 /**

@@ -31,7 +31,7 @@ namespace rclcpp
 {
 
 void
-init(int argc, char const * const argv[], const InitOptions & init_options)
+init(int argc, char const * const * argv, const InitOptions & init_options)
 {
   using rclcpp::contexts::get_global_default_context;
   get_global_default_context()->init(argc, argv, init_options);
@@ -60,7 +60,7 @@ uninstall_signal_handlers()
 static
 std::vector<std::string>
 _remove_ros_arguments(
-  char const * const argv[],
+  char const * const * argv,
   const rcl_arguments_t * args,
   rcl_allocator_t alloc)
 {
@@ -101,7 +101,7 @@ _remove_ros_arguments(
 std::vector<std::string>
 init_and_remove_ros_arguments(
   int argc,
-  char const * const argv[],
+  char const * const * argv,
   const InitOptions & init_options)
 {
   init(argc, argv, init_options);
@@ -112,7 +112,7 @@ init_and_remove_ros_arguments(
 }
 
 std::vector<std::string>
-remove_ros_arguments(int argc, char const * const argv[])
+remove_ros_arguments(int argc, char const * const * argv)
 {
   rcl_allocator_t alloc = rcl_get_default_allocator();
   rcl_arguments_t parsed_args = rcl_get_zero_initialized_arguments();
